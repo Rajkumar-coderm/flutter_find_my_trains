@@ -1,0 +1,34 @@
+name: flutter_find_my_train
+description: "A new Flutter project."
+publish_to: 'none' 
+version: 1.0.0+1
+
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_typeahead: ^5.2.0
+  fluttertoast: ^8.2.8
+  get: ^4.6.6
+  http: ^1.2.1
+  internet_connection_checker: ^2.0.0
+  intl: ^0.19.0
+  webview_flutter: ^4.8.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/json/
+
+
+ 
