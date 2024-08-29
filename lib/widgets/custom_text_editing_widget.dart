@@ -9,6 +9,9 @@ class TextFromFieldWidget extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.suffixIcon,
+    this.keyboardType,
+    this.textInputAction,
+    this.validator,
   });
 
   final Widget? prefixIcon;
@@ -17,6 +20,9 @@ class TextFromFieldWidget extends StatelessWidget {
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final Function(String value)? onChanged;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) => TextFormField(
@@ -24,6 +30,9 @@ class TextFromFieldWidget extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         style: const TextStyle(color: Colors.white),
+        keyboardType: keyboardType,
+        textInputAction: textInputAction,
+        validator: validator,
         decoration: InputDecoration(
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(

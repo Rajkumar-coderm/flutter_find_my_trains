@@ -65,47 +65,43 @@ class HomePageView extends StatelessWidget {
                       width: Get.width,
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: 45,
-                            child: TypeAheadTextFieldCustomWidget<StationData>(
-                              prefixIcon: const Icon(
-                                Icons.my_location_outlined,
-                                color: Colors.white,
-                              ),
-                              suffixIcon: _controller.selectedFromStation ==
-                                      null
-                                  ? null
-                                  : InkWell(
-                                      onTap: () {
-                                        _controller
-                                            .onClearFromStationField(updateId);
-                                      },
-                                      child: const Icon(
-                                        Icons.close,
-                                        color: Colors.white,
-                                        size: 18,
-                                      ),
-                                    ),
-                              controller: _controller.fromStationController,
-                              focusNode: _controller.fromStationNode,
-                              hintText: 'From',
-                              suggestionsCallback: (search) async =>
-                                  await _controller.onStationSearch(search),
-                              onSelected: (value) {
-                                _controller.onSelectFormStation(
-                                  value,
-                                  updateId,
-                                );
-                              },
-                              onChanged: (value) {
-                                _controller.onChangeFromStation(
-                                  value,
-                                  updateId,
-                                );
-                              },
-                              selectedStationData:
-                                  _controller.selectedFromStation,
+                          TypeAheadTextFieldCustomWidget<StationData>(
+                            prefixIcon: const Icon(
+                              Icons.my_location_outlined,
+                              color: Colors.white,
                             ),
+                            suffixIcon: _controller.selectedFromStation == null
+                                ? null
+                                : InkWell(
+                                    onTap: () {
+                                      _controller
+                                          .onClearFromStationField(updateId);
+                                    },
+                                    child: const Icon(
+                                      Icons.close,
+                                      color: Colors.white,
+                                      size: 18,
+                                    ),
+                                  ),
+                            controller: _controller.fromStationController,
+                            focusNode: _controller.fromStationNode,
+                            hintText: 'From',
+                            suggestionsCallback: (search) async =>
+                                await _controller.onStationSearch(search),
+                            onSuggestionSelected: (value) {
+                              _controller.onSelectFormStation(
+                                value,
+                                updateId,
+                              );
+                            },
+                            onChanged: (value) {
+                              _controller.onChangeFromStation(
+                                value,
+                                updateId,
+                              );
+                            },
+                            selectedStationData:
+                                _controller.selectedFromStation,
                           ),
                           Stack(
                             children: [
@@ -136,36 +132,32 @@ class HomePageView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 45,
-                            child: TypeAheadTextFieldCustomWidget<StationData>(
-                              controller: _controller.toStationController,
-                              focusNode: _controller.toStationNode,
-                              hintText: 'To',
-                              suffixIcon: _controller.selectedToStation == null
-                                  ? null
-                                  : InkWell(
-                                      onTap: () {
-                                        _controller
-                                            .onClearToStationField(updateId);
-                                      },
-                                      child: const Icon(
-                                        Icons.close,
-                                        color: Colors.white,
-                                        size: 18,
-                                      ),
+                          TypeAheadTextFieldCustomWidget<StationData>(
+                            controller: _controller.toStationController,
+                            focusNode: _controller.toStationNode,
+                            hintText: 'To',
+                            suffixIcon: _controller.selectedToStation == null
+                                ? null
+                                : InkWell(
+                                    onTap: () {
+                                      _controller
+                                          .onClearToStationField(updateId);
+                                    },
+                                    child: const Icon(
+                                      Icons.close,
+                                      color: Colors.white,
+                                      size: 18,
                                     ),
-                              suggestionsCallback: (search) async =>
-                                  await _controller.onStationSearch(search),
-                              onSelected: (value) {
-                                _controller.onSelectToStation(value, updateId);
-                              },
-                              onChanged: (value) {
-                                _controller.onChangeToStation(value, updateId);
-                              },
-                              selectedStationData:
-                                  _controller.selectedToStation,
-                            ),
+                                  ),
+                            suggestionsCallback: (search) async =>
+                                await _controller.onStationSearch(search),
+                            onSuggestionSelected: (value) {
+                              _controller.onSelectToStation(value, updateId);
+                            },
+                            onChanged: (value) {
+                              _controller.onChangeToStation(value, updateId);
+                            },
+                            selectedStationData: _controller.selectedToStation,
                           ),
                           Dimense.boxHeight(10),
                           InkWell(

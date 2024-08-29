@@ -11,7 +11,7 @@ class TypeAheadTextFieldCustomWidget<T extends StationData>
     required this.hintText,
     this.onChanged,
     this.selectedStationData,
-    this.onSelected,
+    this.onSuggestionSelected,
     required this.suggestionsCallback,
     this.prefixIcon,
     this.suffixIcon,
@@ -22,7 +22,7 @@ class TypeAheadTextFieldCustomWidget<T extends StationData>
   final String hintText;
   final Function(String value)? onChanged;
   final T? selectedStationData;
-  final Function(T value)? onSelected;
+  final Function(T value)? onSuggestionSelected;
   final Future<List<T>?> Function(String) suggestionsCallback;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -37,11 +37,13 @@ class TypeAheadTextFieldCustomWidget<T extends StationData>
         controller: controller,
         itemBuilder: (context, value) => SearchTrailsResultWidget(value: value),
         builder: (context, controller, focusNode) => TextFromFieldWidget(
+          keyboardType: TextInputType.visiblePassword,
           controller: controller,
           focusNode: focusNode,
           hintText: hintText,
           onChanged: onChanged,
           suffixIcon: suffixIcon,
+          validator: (p0) => 'errr',
           prefixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -78,7 +80,7 @@ class TypeAheadTextFieldCustomWidget<T extends StationData>
             ],
           ),
         ),
-        onSelected: onSelected,
+        onSelected: onSuggestionSelected,
         suggestionsCallback: suggestionsCallback,
       );
 }
